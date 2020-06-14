@@ -43,6 +43,8 @@ public class Main {
 
             //выводим таблицу
             globalMap.printMap();
+            globalMap.SaveResultsToFileWords(filesTexts);
+
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }

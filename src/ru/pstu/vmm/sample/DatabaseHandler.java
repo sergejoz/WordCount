@@ -7,18 +7,14 @@ public class DatabaseHandler extends Configs {
 
     public Connection getDbConnection()
             throws ClassCastException, SQLException {
-      //  String connectionString = "jdbc:mysql://" + dbHost + ":"
-      //          + dbPort + "/" + dbName + "?" + "useUnicode=true&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-
-      //  dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
-
         dbConnection = DriverManager.getConnection("jdbc:mysql://"+ dbHost +"/" + dbName, dbUser, dbPass);
 
         return dbConnection;
     }
 
+    // сохранение файлов и путей в таблицу FileNames
     public void addFileName(String filename) {
-        String insert = "INSERT INTO FileNames (Names) VALUES ('" + filename + "')";
+        String insert = "INSERT INTO FileNames (file_id, file_path) VALUES ('" + filename + "')";
         connectDB(insert);
     }
 
@@ -34,5 +30,11 @@ public class DatabaseHandler extends Configs {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addFileWords(Integer file_id, Integer word_id)
+    {
+        String insert = "INSERT INTO FileWords (file_id, word_id) VALUES ('" + file_id + "','" + word_id + "')";
+        connectDB(insert);
     }
 }
