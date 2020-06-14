@@ -1,4 +1,4 @@
-package ru.pstu.vmm.sample;
+﻿package ru.pstu.vmm.sample;
 
 import java.sql.*;
 
@@ -14,7 +14,7 @@ public class DatabaseHandler extends Configs {
 
     // сохранение файлов и путей в таблицу FileNames
     public void addFileName(String filename) {
-        String insert = "INSERT INTO FileNames (file_id, file_path) VALUES ('" + filename + "')";
+        String insert = "INSERT INTO FileNames (file_path) VALUES ('" + filename + "')";
         connectDB(insert);
     }
 
